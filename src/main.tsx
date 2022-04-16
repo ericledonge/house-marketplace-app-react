@@ -1,9 +1,18 @@
 import './index.css';
 
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import { firebaseConfig } from '../firebase.config';
+import App from './app';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const firebaseApp = initializeApp(firebaseConfig);
+export const db = getFirestore();
+export const auth = getAuth();
 
 ReactDOM.render(
   <React.StrictMode>
