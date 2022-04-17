@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // @ts-ignore
 import KeyboardArrowRightIcon from '../../resources/assets/svg/keyboardArrowRightIcon.svg?component';
@@ -34,7 +35,7 @@ const SignIn = () => {
         navigate('/');
       }
     } catch (error) {
-      console.error(error);
+      toast.error('Wrong user credentials');
     }
   };
 

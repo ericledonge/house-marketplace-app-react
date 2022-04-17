@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import { auth } from '../main';
+import { auth } from '../libs/firebase';
 import { UserCredential } from './sign-up.service';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

@@ -6,7 +6,7 @@ import {
 } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 
-import { auth, db } from '../main';
+import { auth, db } from '../libs/firebase';
 
 export type UserCredential = {
   email: string;

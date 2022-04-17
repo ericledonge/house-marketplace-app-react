@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // @ts-ignore
 import KeyboardArrowRightIcon from '../../resources/assets/svg/keyboardArrowRightIcon.svg?component';
@@ -33,7 +34,7 @@ const SignUp = () => {
       await singUp({ name, email, password });
       navigate('/');
     } catch (error) {
-      console.error(error);
+      toast.error('Something went wrong with registration');
     }
   };
 

@@ -1,10 +1,14 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/navbar';
 import Explore from './pages/explore';
 import ForgotPassword from './pages/forgot-password';
 import Offers from './pages/offers';
+import Profile from './pages/profile';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 
@@ -15,7 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/profile" element={<SignIn />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -23,6 +27,8 @@ const App = () => {
 
         <Navbar />
       </Router>
+
+      <ToastContainer />
     </>
   );
 };
