@@ -1,38 +1,27 @@
-import { updateProfile } from 'firebase/auth';
-import { doc, updateDoc } from 'firebase/firestore';
 import React, { SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { auth, db } from '../libs/firebase';
+import { useGetUserInfo } from '../hooks/useGetUserInfo';
+import { signOut } from '../services/sign-out.service';
+import { updateUserProfile } from '../services/update-profile.service';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Profile = () => {
-  const [formData, setFormData] = useState({
-    name: auth.currentUser?.displayName || '',
-    email: auth.currentUser?.email || '',
-  });
+  const { name, displayName, email, setUserInfo } = useGetUserInfo();
   const [isChangeMode, setIsChangeMode] = useState(false);
 
   const navigate = useNavigate();
 
-  const { name, email } = formData;
-
   const handleLogout = async () => {
-    await auth.signOut();
+    await signOut();
     navigate('/');
   };
 
   const handleSubmit = async () => {
     try {
-      if (auth.currentUser && auth.currentUser?.displayName !== name) {
-        await updateProfile(auth.currentUser, {
-          displayName: name,
-        });
-
-        const userRef = doc(db, 'users', auth.currentUser.uid);
-        await updateDoc(userRef, {
-          name,
-        });
+      if (displayName !== name) {
+        await updateUserProfile(name);
       }
     } catch (error) {
       toast.error('Could not update profile details');
@@ -40,7 +29,7 @@ const Profile = () => {
   };
 
   const handleChange = (e: SyntheticEvent) => {
-    setFormData((prevState) => ({
+    setUserInfo((prevState) => ({
       ...prevState,
       // @ts-ignore
       [e.target.id]: e.target.value,
