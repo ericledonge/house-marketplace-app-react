@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 // @ts-ignore
 import KeyboardArrowRightIcon from '../../resources/assets/svg/keyboardArrowRightIcon.svg?component';
 import visibilityIcon from '../../resources/assets/svg/visibilityIcon.svg';
-import { singUp } from '../services/sign-up.service';
+import GoogleAuth from '../components/google-auth';
+import { singUpWithFirebase } from '../services/sign-up.service';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const SignUp = () => {
@@ -31,7 +32,7 @@ const SignUp = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await singUp({ name, email, password });
+      await singUpWithFirebase({ name, email, password });
       navigate('/');
     } catch (error) {
       toast.error('Something went wrong with registration');
@@ -95,6 +96,8 @@ const SignUp = () => {
             </button>
           </div>
         </form>
+
+        <GoogleAuth />
 
         <Link to="/sign-in" className="registerLink">
           Sign In Instead

@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 // @ts-ignore
 import KeyboardArrowRightIcon from '../../resources/assets/svg/keyboardArrowRightIcon.svg?component';
 import visibilityIcon from '../../resources/assets/svg/visibilityIcon.svg';
-import { signIn } from '../services/sign-in.service';
+import GoogleAuth from '../components/google-auth';
+import { signInWithFirebase } from '../services/sign-in.service';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const SignIn = () => {
@@ -30,7 +31,7 @@ const SignIn = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      const userCredential = await signIn({ email, password });
+      const userCredential = await signInWithFirebase({ email, password });
       if (userCredential.user) {
         navigate('/');
       }
@@ -87,6 +88,8 @@ const SignIn = () => {
             </button>
           </div>
         </form>
+
+        <GoogleAuth />
 
         <Link to="/sign-up" className="registerLink">
           Sign Up Instead
