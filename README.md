@@ -1,6 +1,4 @@
-My starting template for Vite, React, TypeScript, Jest, Testing Library, Eslint, Prettier.
+[House Marketplace](https://majestic-tapioca-d7fb6e.netlify.app/)
 
-Based on:
+Inspired by A Brad Traversy Course: https://www.udemy.com/course/react-front-to-back-2022/
 
-- https://github.com/TheSwordBreaker/vite-reactts-eslint-prettier
-- https://github.com/simerlec/vite-react-ts-starter
