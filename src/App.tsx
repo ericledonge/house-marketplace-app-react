@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/navbar';
 import PrivateRoute from './components/private-route';
+import Category from './pages/category';
 import Explore from './pages/explore';
 import ForgotPassword from './pages/forgot-password';
 import Offers from './pages/offers';
@@ -13,6 +14,7 @@ import Profile from './pages/profile';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const App = () => {
   return (
     <>
@@ -20,6 +22,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
